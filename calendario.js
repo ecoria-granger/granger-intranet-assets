@@ -108,5 +108,10 @@
         document.addEventListener('DOMContentLoaded', function() { renderCal(curYear, curMonth); });
     } else {
         renderCal(curYear, curMonth);
+<<<<<<< HEAD:script.js
     }""
 })();
+=======
+    }
+})();
+>>>>>>> 6ade70790157d51f4e6b2f6f48ce5fb9e690279f:calendario.js
