@@ -108,5 +108,5 @@
         document.addEventListener('DOMContentLoaded', function() { renderCal(curYear, curMonth); });
     } else {
         renderCal(curYear, curMonth);
-    }
+    }""
 })();
