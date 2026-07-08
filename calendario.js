@@ -2,6 +2,11 @@
     var MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
     var DIAS_CORTOS = ['L','M','X','J','V','S','D'];
 
+    // ---- Colores para cumpleaños (cambialos si querés verde en vez de celeste) ----
+    var BDAY_COLOR = '#0369a1';   // color del número (celeste oscuro)
+    var BDAY_BG    = '#e0f2fe';   // background del badge
+    // Alternativa en verde: BDAY_COLOR = '#15803d';  BDAY_BG = '#dcfce7';
+
     var FERIADOS = {
         '2026-01-01': 'Año Nuevo',
         '2026-02-16': 'Carnaval',
@@ -31,13 +36,10 @@
         var titleEl = document.getElementById('ig-cal-title');
         var grid = document.getElementById('ig-cal-grid');
         var holidayDiv = document.getElementById('ig-cal-holidays');
-        // Opcional: si en el HTML agregás <div id="ig-cal-birthdays"></div>
-        // los cumples van ahí. Si no existe, se agregan debajo de los feriados.
         var birthdayDiv = document.getElementById('ig-cal-birthdays');
 
         if (!titleEl || !grid || !holidayDiv) return;
 
-        // Se lee en cada render por si Birthday.js se actualiza dinámicamente
         var CUMPLES = window.CUMPLES || {};
 
         titleEl.textContent = MESES[month] + ' ' + year;
@@ -67,11 +69,11 @@
         for (var day = 1; day <= daysInMonth; day++) {
             var el = document.createElement('div');
             var dateKey = year + '-' + pad(month + 1) + '-' + pad(day);
-            var mmddKey = pad(month + 1) + '-' + pad(day);  // clave para cumpleaños (sin año)
+            var mmddKey = pad(month + 1) + '-' + pad(day);
             var dayOfWeek = new Date(year, month, day).getDay();
             var isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
             var isHoliday = FERIADOS[dateKey];
-            var birthdayNames = CUMPLES[mmddKey]; // array de nombres o undefined
+            var birthdayNames = CUMPLES[mmddKey];
             var isToday = (year === hoy.getFullYear() && month === hoy.getMonth() && day === hoy.getDate());
 
             if (isToday) {
@@ -90,19 +92,16 @@
             }
 
             if (birthdayNames && birthdayNames.length > 0) {
-                // Marca 🎂 en la esquina superior derecha de la celda
-                el.style.position = 'relative';
-                var cake = document.createElement('span');
-                cake.textContent = '🎂';
-                cake.style.cssText = 'position:absolute;top:0;right:1px;font-size:10px;line-height:1;pointer-events:none;';
-                el.appendChild(cake);
+                // Marcar el número del día en celeste + negrita
+                el.style.color = BDAY_COLOR;
+                el.style.fontWeight = '700';
                 birthdaysThisMonth.push({ day: day, names: birthdayNames });
             }
 
             grid.appendChild(el);
         }
 
-        // ---- Render de feriados ----
+        // ---- Feriados ----
         holidayDiv.innerHTML = '';
         if (holidaysThisMonth.length > 0) {
             holidaysThisMonth.forEach(function(h) {
@@ -115,15 +114,13 @@
             holidayDiv.innerHTML = '<span style="font-size:11px;color:#B4B2A9;">Sin feriados este mes</span>';
         }
 
-        // ---- Render de cumpleaños ----
-        // Si hay un div dedicado lo usamos; si no, los agregamos debajo de los feriados
+        // ---- Cumpleaños ----
         var targetBday = birthdayDiv || holidayDiv;
         if (birthdayDiv) {
             birthdayDiv.innerHTML = '';
         }
 
         if (birthdaysThisMonth.length > 0) {
-            // Si compartimos contenedor con los feriados, ponemos un pequeño separador
             if (!birthdayDiv) {
                 var sep = document.createElement('div');
                 sep.style.cssText = 'margin-top:10px;padding-top:6px;border-top:1px dashed #EAE7DE;font-size:10px;color:#B4B2A9;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;';
@@ -137,13 +134,12 @@
                     var row = document.createElement('div');
                     row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:4px 0;font-size:11px;color:#3D3935;' + (isTodayBday ? 'font-weight:700;' : '');
                     row.innerHTML =
-                        '<span style="background:#fde4ec;color:#BE185D;border-radius:4px;padding:2px 6px;font-weight:600;min-width:24px;text-align:center;">' + b.day + '</span>' +
-                        (isTodayBday ? '🎂 ' : '') + name;
+                        '<span style="background:' + BDAY_BG + ';color:' + BDAY_COLOR + ';border-radius:4px;padding:2px 6px;font-weight:600;min-width:24px;text-align:center;">' + b.day + '</span>' +
+                        '<span>🎂 ' + name + '</span>';
                     targetBday.appendChild(row);
                 });
             });
         } else if (birthdayDiv) {
-            // Sólo mostramos el "vacío" cuando hay un div dedicado
             birthdayDiv.innerHTML = '<span style="font-size:11px;color:#B4B2A9;">Sin cumpleaños este mes</span>';
         }
     }
