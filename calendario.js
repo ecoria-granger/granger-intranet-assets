@@ -92,8 +92,9 @@
             }
 
             if (birthdayNames && birthdayNames.length > 0) {
-                // Fondo celeste en la celda del cumpleañero
+                // Fondo celeste en la celda del cumpleañero, número en negro
                 el.style.background = BDAY_BG;
+                el.style.color = '#3D3935';
                 el.style.borderRadius = '4px';
                 el.style.fontWeight = '700';
                 birthdaysThisMonth.push({ day: day, names: birthdayNames });
