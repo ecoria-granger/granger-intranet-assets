@@ -95,6 +95,7 @@
                 // Marcar el número del día en celeste + negrita
                 el.style.color = BDAY_COLOR;
                 el.style.fontWeight = '700';
+                el.style.backgroundColor = BDAY_COLOR;
                 birthdaysThisMonth.push({ day: day, names: birthdayNames });
             }
 
