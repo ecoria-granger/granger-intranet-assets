@@ -92,10 +92,10 @@
             }
 
             if (birthdayNames && birthdayNames.length > 0) {
-                // Marcar el número del día en celeste + negrita
-                el.style.color = BDAY_COLOR;
+                // Fondo celeste en la celda del cumpleañero
+                el.style.background = BDAY_BG;
+                el.style.borderRadius = '4px';
                 el.style.fontWeight = '700';
-                el.style.backgroundColor = BDAY_COLOR;
                 birthdaysThisMonth.push({ day: day, names: birthdayNames });
             }
 
