@@ -34,10 +34,10 @@ window.CUMPLES = {
     '05-27': ['Diego Morales'],
 
     // Junio
-    '06-05': ['Verónica Silva'],
+    '06-13': ['Caula Marcos'],
 
     // Julio
-    '07-16': ['Federico Álvarez'],
+    '07-09': ['Coria Elias'],
 
     // Agosto
     '08-09': ['Camila Torres'],
