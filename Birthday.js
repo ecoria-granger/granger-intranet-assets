@@ -40,13 +40,11 @@ window.CUMPLES = {
     // Mayo
     '05-01': ['Ferraris Matias'],
     '05-08': ['Barabara Sejas'],
-    '05-12': ['Gonzalo Moruzze'],
-    '05-12': ['Melina Barreto'], 
+    '05-12': ['Gonzalo Moruzze', 'Melina Barreto'],
     '05-19': ['Ignacio Bartizaghi'],
     '05-20': ['Fernando Imohff'],
     '05-22': ['Aranda David'],
-    '05-27': ['Matias Navarro'],
-    '05-27': ['Landriel Alexis'],
+    '05-27': ['Landriel Alexis', 'Matias Navarro'],
     '05-30': ['Dylan Alvarez'],
     // Junio
     '06-13': ['Caula Marcos'],
