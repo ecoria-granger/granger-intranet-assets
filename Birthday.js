@@ -41,6 +41,7 @@ window.CUMPLES = {
     '05-01': ['Ferraris Matias'],
     '05-08': ['Barabara Sejas'],
     '05-12': ['Gonzalo Moruzze'],
+    '05-12': ['Melina Barreto'], 
     '05-19': ['Ignacio Bartizaghi'],
     '05-20': ['Fernando Imohff'],
     '05-22': ['Aranda David'],
@@ -77,8 +78,7 @@ window.CUMPLES = {
     '11-08': ['Nerina Aglieri'],
     '11-10': ['Barrera Thiago'],
 
-    // Diciembre
-    '12-05': ['Melina Barretto']
+    
 
     // ⬆️ agregá acá los que falten, respetando el formato 'MM-DD': ['Nombre'],
 };
